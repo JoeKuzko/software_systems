@@ -1,18 +1,26 @@
 #include "buffer.h"
-#include <iostream>
-#include <fstream>
-#include <string>
-using namespace std;
 
 void buffer::Read()
 {
-    string file = "Copy of us_postal_codes.csv";    // might have different names of file
+    string file; 
     string  line;
     record myrecord;
-    buffer mybuffer;
     int count = 0;
 
-    ifstream filein(file);
+    cout << "Enter a CSV file to output: ";
+    cin >> file;
+    ifstream filein;
+    filein.open(file);
+    if(!filein)
+    {
+        while (!filein)
+        {
+            cout << "That file does not exist, please enter it again: ";
+            cin >> file;
+            filein.open(file);
+        }
+    }
+   
 
 
     while (!filein.eof())
@@ -23,14 +31,13 @@ void buffer::Read()
         {
             if (count > 3)
             {
-                myrecord = mybuffer.unpack(line);
-                mybuffer.pack(myrecord);
-                
+                myrecord = unpack(line);
+                pack(myrecord);
+               
             }
         }
     }
-    // or maybe have it sort right here????
-    mybuffer.Write();
+    Write();
 }
 
 record buffer::unpack(string line) {
@@ -44,7 +51,7 @@ record buffer::unpack(string line) {
     int temp_count = 0;
     for (int i = 0; i < line.length(); i++) {
 
-        if (line[i] == ',') {
+        if (line[i] == ','|| line[i-1] ==',') {
             temp_count++;
             i++;
         }
@@ -77,10 +84,72 @@ record buffer::unpack(string line) {
 }
 
 void buffer::pack(record new_record) {
-    // take new_record and put into 2d vector
+
+    vectorRecords.push_back(new_record);
 }
 
 void buffer::Write() {
-    // outputs the northern most, western, eastern, southern, zipcodes into a table of a state
-    // and will sort the vector??? 
+
+    sort(vectorRecords.begin(), vectorRecords.end()); //sort the vector to make processing easier
+
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// Evaluate and ouput west,east,north, and south most zip codes for each state //
+/////////////////////////////////////////////////////////////////////////////////
+    record myrecord;
+    myrecord = vectorRecords[0];
+    string st = myrecord.state;
+
+    double westMost = -999999, eastMost= -999999, northMost= -999999, southMost= -999999; //stores the (west,east,north,south) most value for each state. Set to impossible value to start.
+    string zipWestMost, zipEastMost, zipNorthMost, zipSouthMost; //stores the zip code for the (west,east,north,south) most values.
+
+    cout << string(55, '-') << endl;
+    cout << setw(7) << "State"<< setw(12)<< "North-Most" << setw(12)<< "South-Most" << setw(12)<< "East-Most" << setw(12)<< "West-Most" << endl;
+    cout << string(55, '-')<< endl;
+
+
+    for(int i = 0; i < vectorRecords.size(); i++)
+    {
+        myrecord = vectorRecords[i]; //set myrecord equal to current record being read
+        if(st == myrecord.state){ //the same state is being read
+            if(stod(myrecord.latitude) < westMost || westMost == -999999) //check for west most
+            {
+                westMost = stod(myrecord.latitude); 
+                zipWestMost = myrecord.zipcode;
+            }
+            if(stod(myrecord.latitude) > eastMost || eastMost == -999999) //check for east most
+            {
+                eastMost = stod(myrecord.latitude);
+                zipEastMost = myrecord.zipcode;
+            }
+            if(stod(myrecord.longitude) < northMost || northMost == -999999) //check for south most
+            {
+                northMost = stod(myrecord.longitude);
+                zipNorthMost = myrecord.zipcode;
+            }
+            if(stod(myrecord.longitude) > southMost || southMost == -999999) //check for north most
+            {
+                southMost = stod(myrecord.longitude);
+                zipSouthMost = myrecord.zipcode;
+            }
+        }
+        else{ 
+            cout << setw(7) << vectorRecords[i-1].state<< setw(12)<< zipNorthMost << setw(12)<< zipSouthMost << setw(12)<< zipEastMost << setw(12)<< zipWestMost << endl;
+
+            st = myrecord.state;
+            westMost = -999999; //reset to impossible value
+            eastMost = -999999; //reset to impossible value
+            northMost = -999999; //reset to impossible value
+            southMost = -999999; //reset to impossible value
+            i--; //decrement so that this current state is accounted for 
+        }
+    }
+     cout << string(55, '-')<< endl;
+
 }
+bool operator <(const record& r1, const record& r2) {
+    return r1.state < r2.state;
+}
+
+
