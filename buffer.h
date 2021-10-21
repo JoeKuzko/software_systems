@@ -1,14 +1,17 @@
+#ifndef Header_h
+#define Header_h
 
-#ifndef buffer_h
-#define buffer_h
 #include <iostream>
-#include <string>
 #include <vector>
+#include <fstream>
+#include <string>
+#include <iomanip>
+#include <algorithm>
+
+
 using namespace std;
 
-
 class record {
-
 public:
     string zipcode;
     string city;
@@ -18,21 +21,21 @@ public:
     string longitude;
 };
 
-
-vector < vector<record>> vector_Array; // idkkkkk
-
 class buffer {
 
 public:
-    void Read();
+    vector <record> vectorRecords; //vector that will store records
+    void Read(string);
+    void col_names(string);
+    void convert();
+    vector <string> columns;
+    vector <char>   col_chars;
     void Write();
     record unpack(string);
     void pack(record);
-    // bool compareStates(const Record& a, const Record& b)
-      //   bool compareLat(const Record& a, const Record& b)
-
-    
-
+    friend bool operator< (const record& r1, const record& r2); //overload < operator
 };
 
-#endif
+
+#endif // !Header_h
+
