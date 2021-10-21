@@ -19,7 +19,6 @@ public:
     string county;
     string latitude;
     string longitude;
-    int byte_offset = 0;
 };
 
 class buffer {
@@ -35,8 +34,14 @@ public:
     record unpack(string);
     void pack(record);
     friend bool operator< (const record& r1, const record& r2); //overload < operator
-};
 
+    string records;
+    void LIconvert();
+    void LIwrite();
+    void LIFileHeader();
+
+
+};
 
 #endif // !Header_h
 
