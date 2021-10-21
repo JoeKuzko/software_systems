@@ -200,3 +200,54 @@ void buffer::convert() {
         }
     }
 }
+
+void buffer::LIconvert() {
+    for (int i = 0; i < vectorRecords.size(); i++) {
+        string temp = "";
+        int tempi = 0;
+        for (int j = 0; j < col_chars.size(); j++) {
+            switch (col_chars[j])
+            {
+            case 'Z':
+                temp = temp + vectorRecords[i].zipcode + ',';
+                break;
+            case 'P':
+                temp = temp + vectorRecords[i].city + ',';
+                break;
+            case 'S':
+                temp = temp + vectorRecords[i].state + ',';
+                break;
+            case 'C':
+                temp = temp + vectorRecords[i].county + ',';
+                break;
+            case 'L':
+                temp = temp + vectorRecords[i].latitude + ',';
+                break;
+            case 'l':
+                temp = temp + vectorRecords[i].longitude + ',';
+                break;
+            }
+        }
+
+        tempi = temp.size() + 3 ; // 3 is the length of the number of characters count and ',' included
+        temp = to_string(tempi) + ',' + temp;
+        records = records + temp;
+    }
+}
+
+void buffer::LIFileHeader() {
+    string temp;
+    int tempi = 0;
+    for (int i = 0; i < columns.size(); i++) {
+        temp = temp + columns[i] + ',';
+    }
+    tempi = temp.size() + 3 ;
+    temp = to_string(tempi) + ',' + temp;
+    records = temp;
+}
+
+void buffer::LIwrite() {
+    ofstream NewFile("Length Indicated.txt");
+    NewFile << records;
+    NewFile.close();
+}
