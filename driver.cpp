@@ -1,19 +1,34 @@
-#include "Header.h"
+#include <iomanip>
+#include "buffer.h"
+
+
 
 using namespace std;
 
-int main(){
-	buffer mybuffer;
-	string FileName;
-	cout << "This program will take data from a CSV file and return the north-most, south-most, east-most,  \nand west-most zipcode for each state\n\n";
-	cout << "Enter a .csv file: ";
-	cin >> FileName;
-	mybuffer.col_names(FileName);
-	mybuffer.convert();
-	mybuffer.Read(FileName);
-	mybuffer.LIFileHeader();
-	mybuffer.LIconvert();
-	mybuffer.LIwrite();
-	mybuffer.Write();
 
+int main(int argc, char* argv[]) //take in arguments from command line
+{
+    string file = argv[1]; //first argument is the name of the csv file
+    string arr[argc];
+    for (int i = 2; i < argc; i++) //for every command argument after the first (which is the filename)
+    {
+        arr[i-2] = argv[i];
+    }
+
+    buffer mybuffer; //create buffer instance
+    mybuffer.Read(file); 
+    mybuffer.EvaluateArguments(arr, argc);
+    mybuffer.PrintKeyData();
+
+    return 0;
 }
+
+
+
+
+
+
+
+
+
+
