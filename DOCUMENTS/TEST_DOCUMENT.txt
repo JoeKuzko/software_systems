@@ -1,0 +1,40 @@
+This document will indicate what values we used to test our program as well as the logic behind why we 
+chose those values. Our main goal in picking these values was to test every aspect of the program to 
+ensure its functionality.
+
+The main 2 files we use for testing are:
+"zipcode_row_randomized.csv"
+"zipcode_column_randomized.csv"
+
+These two files were chosen to ensure that no matter whether the columns or rows are reordered, the program
+will maintain its functionality and the output is the exact same. 
+
+The following tests were made in the following order (the same order as the scriptfile):
+- Ensure both files output the same results for the functionality of Zip Code 1.0
+- Ensure that both files produced the right output for the console, lengthindicatedfile, and indexfile when
+entering CORRECT zip code values as parameters
+- Ensure that both files produced the right output for the console, lengthindicatedfile, and indexfile when
+entering INCORRECT values as well 
+
+In the scriptfile, each test was run in the following order (after first compiling the program):
+-run the program with the testing parameters
+-display the index file to the console (cat command) after the program output
+(the length indicated text file is too large to be displayed into the scriptfile, but will be verified)
+
+Here are the tests entered in order (in accordance to scriptfile):
+-------------------------------------------------------------------------------------------------------
+./a.exe zipcode_row_randomized.csv
+./a.exe zipcode_column_randomized.csv
+
+./a.exe zipcode_row_randomized.csv -z501 -z56303 -z1339 -z14897 -z10921 -z43068 -z70788 -z77348
+cat indexFile.txt
+./a.exe zipcode_column_randomized.csv -z501 -z56303 -z1339 -z14897 -z10921 -z43068 -z70788 -z77348
+cat indexFile.txt
+
+./a.exe zipcode_row_randomized.csv -z501 -z56303 -z1339 -z14897 -z10921 -z43068 -z70788 -z77348 -z12 -z999999 -z291203 -z42 -z-1221
+cat indexFile.txt
+./a.exe zipcode_column_randomized.csv -z501 -z56303 -z1339 -z14897 -z10921 -z43068 -z70788 -z77348 -z12 -z999999 -z210203 -z42 -z-1221
+cat indexFile.txt
+------------------------------------------------------------------------------------------------------
+
+All tests returned expected output, which can be seen in the file "ScriptFile.txt"

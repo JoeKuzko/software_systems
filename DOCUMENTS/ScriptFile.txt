@@ -1,0 +1,260 @@
+Script started on 2021-10-25 01:00:33-05:00 [TERM="xterm-256color" TTY="/dev/cons1" COLUMNS="220" LINES="50"]
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ g++ driver.cpp
+[?2004l[6n[6n[m[?25h[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ ./a.exe zipcode_row_randomized.csv
+[?2004l[6n[m[?25h-------------------------------------------------------
+  State  North-Most  South-Most   East-Most   West-Most
+-------------------------------------------------------
+     AA       34034       34034       34034       34034
+     AK       99723       99546       99923       99546
+     AL       35739       36547       36856       36584
+     AP       96507       96373       96507       96373
+     AR       72733       71749       72310       72747
+     AZ       86021       85620       86508       85349
+     CA       95567       92173       92267       95536
+     CO       81653       81138       81047       81411
+     CT        6079        6836        6243        6831
+     DC       20012       20375       20019       20016
+     DE       19810       19975       19944       19716
+     FL       32452       33045       33480       32568
+     FM       96941       96941       96941       96941
+     GA       30751       31562       31328       30752
+     HI       96722       96772       96898       96769
+     IA       52160       52632       52734       51001
+     ID       83826       83237       83238       83844
+     IL       60075       62914       60438       62379
+     IN       46530       47635       47003       47631
+     KS       66955       66778       66118       67836
+     KY       41074       42049       41568       42050
+     LA       71075       70081       70081       71007
+     MA        1913        2564        2643        1258
+     MD       21088       21866       21842       21531
+     ME        4741        3904        4631        4261
+     MH       96970       96960       96960       96970
+     MI       49918       49232       48061       49938
+     MN       56711       55931       55605       56740
+     MO       63535       63829       63881       64496
+     MP       96951       96952       96950       96951
+     MS       38671       39558       38847       39165
+     MT       59484       59739       59319       59844
+     NC       28631       28468       27982       28903
+     ND       58255       58043       58074       58621
+     NE       69365       68325       68431       69352
+     NH        3592        3062        3854        3466
+     NJ        7827        8212        7620        8070
+     NM       87418       88063       88135       88056
+     NV       89404       89029       89034       89402
+     NY       12979       10307       11954       14736
+     OH       44030       45680       44438       45003
+     OK       74072       74747       74901       73946
+     OR       97121       97635       97842       97465
+     PA       16428       19351       18336       16155
+     PW       96940       96940       96940       96940
+     RI        2824        2807        2837        2891
+     SC       29356       29915       29566       29658
+     SD       57645       57049       57068       57724
+     TN       37119       37396       37680       38109
+     TX       79051       78522       75932       79821
+     UT       84331       84784       84534       84083
+     VA       22625       24580       23336       24248
+     VT        5902        5352        5902        5734
+     WA       98231       98671       99402       98350
+     WI       54850       53102       54246       54082
+     WV       26050       24884       25425       25555
+-------------------------------------------------------
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ ./a.exe zipcode_column_randomized.csv
+[?2004l[6n[m[?25h-------------------------------------------------------
+  State  North-Most  South-Most   East-Most   West-Most
+-------------------------------------------------------
+     AA       34034       34034       34034       34034
+     AK       99723       99546       99923       99546
+     AL       35739       36547       36856       36584
+     AP       96507       96373       96507       96373
+     AR       72733       71749       72310       72747
+     AZ       86021       85620       86508       85349
+     CA       95567       92173       92267       95536
+     CO       81653       81138       81047       81411
+     CT        6079        6836        6243        6831
+     DC       20012       20375       20019       20016
+     DE       19810       19975       19944       19716
+     FL       32452       33045       33480       32568
+     FM       96941       96941       96941       96941
+     GA       30751       31562       31328       30752
+     HI       96722       96772       96898       96769
+     IA       52160       52632       52734       51001
+     ID       83826       83237       83238       83844
+     IL       60075       62914       60438       62379
+     IN       46530       47635       47003       47631
+     KS       66955       66778       66118       67836
+     KY       41074       42049       41568       42050
+     LA       71075       70081       70081       71007
+     MA        1913        2564        2643        1258
+     MD       21088       21866       21842       21531
+     ME        4741        3904        4631        4261
+     MH       96970       96960       96960       96970
+     MI       49918       49232       48061       49938
+     MN       56711       55931       55605       56740
+     MO       63535       63829       63881       64496
+     MP       96951       96952       96950       96951
+     MS       38671       39558       38847       39165
+     MT       59484       59739       59319       59844
+     NC       28631       28468       27982       28903
+     ND       58255       58043       58074       58621
+     NE       69365       68325       68431       69352
+     NH        3592        3062        3854        3466
+     NJ        7827        8212        7620        8070
+     NM       87418       88063       88135       88056
+     NV       89404       89029       89034       89402
+     NY       12979       10307       11954       14736
+     OH       44030       45680       44438       45003
+     OK       74072       74747       74901       73946
+     OR       97121       97635       97842       97465
+     PA[1C      16428       19351       18336       16155
+     PW       96940       96940       96940       96940
+     RI        2824        2807        2837        2891
+     SC       29356       29915       29566       29658
+     SD       57645       57049       57068       57724
+     TN       37119       37396       37680       38109
+     TX       79051       78522       75932       79821
+     UT       84331       84784       84534       84083
+     VA       22625       24580       23336       24248
+     VT        5902        5352        5902        5734
+     WA       98231       98671       99402       98350
+     WI       54850       53102       54246       54082
+     WV       26050       24884       25425       25555
+-------------------------------------------------------
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ ./a.exe zipcode_row_randomized.csv -z501 -z56303 -z1339 -z14897 -z10921 -z43068 -z70788 -z77348
+[?2004l[6n[m[?25h--------------------------------------------------------------------------------------------------------------------------------------------
+Zipcode     City                                    State       County                                  Latitude       Longitude
+--------------------------------------------------------------------------------------------------------------------------------------------
+501         Holtsville                              NY          Suffolk                                 40.8154        -73.0451
+56303       Saint Cloud                             MN          Stearns                                 45.5713        -94.2036
+1339        Charlemont                              MA          Franklin                                42.608         -72.8901       
+14897       Whitesville                             NY          Allegany                                42.0456        -77.8106
+10921       Florida                                 NY          Orange                                  41.3295        -74.3528       
+43068[4C   Reynoldsburg                            OH          Franklin                                39.9551        -82.8035       
+70788       White Castle                            LA          Iberville                               30.1545        -91.1773
+77348       Huntsville                              TX          Walker                                  30.7235        -95.5508       
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ cat indexFile.txt
+[?2004lKey Locations marked as "-1" do not exist in the csv data file.
+----------------------------------------------------------------------
+PrimaryKey: 501    | Location: 0
+PrimaryKey: 56303  | Location: 1113335
+PrimaryKey: 1339   | Location: 6498
+PrimaryKey: 14897  | Location: 242529
+PrimaryKey: 10921  | Location: 154881
+PrimaryKey: 43068  | Location: 830501
+PrimaryKey: 70788  | Location: 1388893
+PrimaryKey: 77348  | Location: 1527284
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ ./a.exe zipcode_column_randomized.csv -z501 -z56303 -z1339 -z14897 -z10921 -z43068 -z70788 -z77348
+[?2004l[6n[m[?25h--------------------------------------------------------------------------------------------------------------------------------------------
+Zipcode     City                                    State       County                                  Latitude       Longitude
+--------------------------------------------------------------------------------------------------------------------------------------------
+501         Holtsville                              NY          Suffolk                                 40.8154        -73.0451
+56303       Saint Cloud                             MN          Stearns                                 45.5713        -94.2036
+1339        Charlemont                              MA          Franklin                                42.608         -72.8901       
+14897       Whitesville                             NY          Allegany                                42.0456        -77.8106
+10921       Florida                                 NY          Orange                                  41.3295        -74.3528       
+43068       Reynoldsburg                            OH          Franklin                                39.9551        -82.8035       
+70788       White Castle                            LA          Iberville                               30.1545        -91.1773
+77348       Huntsville                              TX          Walker                                  30.7235        -95.5508       
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ cat indexFile.txt
+[?2004lKey Locations marked as "-1" do not exist in the csv data file.
+----------------------------------------------------------------------
+PrimaryKey: 501    | Location: 0
+PrimaryKey: 56303  | Location: 1113335
+PrimaryKey: 1339   | Location: 6498
+PrimaryKey: 14897  | Location: 242529
+PrimaryKey: 10921  | Location: 154881
+PrimaryKey: 43068  | Location: 830501
+PrimaryKey: 70788  | Location: 1388893
+PrimaryKey: 77348  | Location: 1527284
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ ./a.exe zipcode_row_randomized.csv -z501 -z56303 -z1339 -z14897 -z10921 -z43068 -z70788 -z77348 -z12 -z999999 -z291203 -z42 -z-1221
+[?2004l[6n[m[?25h--------------------------------------------------------------------------------------------------------------------------------------------
+Zipcode     City                                    State       County                                  Latitude       Longitude
+--------------------------------------------------------------------------------------------------------------------------------------------
+501         Holtsville                              NY          Suffolk                                 40.8154        -73.0451
+56303       Saint Cloud                             MN          Stearns                                 45.5713        -94.2036       
+1339        Charlemont[20C          MA          Franklin                                42.608         -72.8901       
+14897       Whitesville                             NY          Allegany                                42.0456        -77.8106
+10921       Florida                                 NY          Orange                                  41.3295        -74.3528       
+43068       Reynoldsburg[12C                OH          Franklin                                39.9551        -82.8035       
+70788       White Castle                            LA          Iberville                               30.1545        -91.1773
+77348       Huntsville                              TX          Walker                                  30.7235        -95.5508       
+
+
+
+These keys did not exist in the file:  12, 999999, 291203, 42, -1221,[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ cat indexFile.txt
+[?2004lKey Locations marked as "-1" do not exist in the csv data file.
+----------------------------------------------------------------------
+PrimaryKey: 501    | Location: 0
+PrimaryKey: 56303  | Location: 1113335
+PrimaryKey: 1339   | Location: 6498
+PrimaryKey: 14897  | Location: 242529
+PrimaryKey: 10921  | Location: 154881
+PrimaryKey: 43068  | Location: 830501
+PrimaryKey: 70788  | Location: 1388893
+PrimaryKey: 77348  | Location: 1527284
+PrimaryKey: 12     | Location: -1
+PrimaryKey: 999999 | Location: -1
+PrimaryKey: 291203 | Location: -1
+PrimaryKey: 42     | Location: -1
+PrimaryKey: -1221  | Location: -1
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ ./a.exe zipcode_column_randomized.csv -z501 -z56303 -z1339 -z14897 -z10921 -z43068 -z70788 -z77348 -z12 -z999999 -z210203 -z42 -z-1221
+[?2004l[6n[m[?25h--------------------------------------------------------------------------------------------------------------------------------------------
+Zipcode     City                                    State       County                                  Latitude       Longitude
+--------------------------------------------------------------------------------------------------------------------------------------------
+501         Holtsville                              NY          Suffolk                                 40.8154        -73.0451
+56303       Saint Cloud                             MN          Stearns                                 45.5713        -94.2036       
+1339        Charlemont                              MA          Franklin                                42.608         -72.8901
+14897       Whitesville                             NY          Allegany                                42.0456        -77.8106       
+10921       Florida                                 NY          Orange[4C                              41.3295        -74.3528       
+43068       Reynoldsburg                            OH          Franklin                                39.9551        -82.8035
+70788       White Castle                            LA          Iberville                               30.1545        -91.1773       
+77348       Huntsville                              TX          Walker                                  30.7235        -95.5508       
+
+
+
+These keys did not exist in the file:  12, 999999, 210203, 42, -1221,[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ cat indexFile.txt
+[?2004lKey Locations marked as "-1" do not exist in the csv data file.
+----------------------------------------------------------------------
+PrimaryKey: 501    | Location: 0
+PrimaryKey: 56303  | Location: 1113335
+PrimaryKey: 1339   | Location: 6498
+PrimaryKey: 14897  | Location: 242529
+PrimaryKey: 10921  | Location: 154881
+PrimaryKey: 43068  | Location: 830501
+PrimaryKey: 70788  | Location: 1388893
+PrimaryKey: 77348  | Location: 1527284
+PrimaryKey: 12     | Location: -1
+PrimaryKey: 999999 | Location: -1
+PrimaryKey: 210203 | Location: -1
+PrimaryKey: 42     | Location: -1
+PrimaryKey: -1221  | Location: -1
+[?2004h]0;/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0
+[32mburdi@Evan-PC [33m/cygdrive/c/users/burdi/desktop/c++ school/Zip Code 2.0[0m
+$ exit
+[?2004lexit
+
+Script done on 2021-10-25 01:02:35-05:00 [COMMAND_EXIT_CODE="0"]

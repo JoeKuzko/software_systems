@@ -1,10 +1,14 @@
+//---------------------------------------------------------------------------
+/// @file buffer.cpp
+/// @brief The file that drives the program essentially, reads in file and makes proper calls to pack/unpack
+/// @author Evan Burdick, Joseph Kuzko,& Matthew Xiong
+//---------------------------------------------------------------------------
 #include "buffer.h"
-
 
 //see header for info
 void buffer::Read(string file)
 {
-    
+
     record myrecord;
     string headerRecordString ="", line, tempString;
     string columnHeaders; //concatenation of all of the column headers, to determine their order
@@ -18,7 +22,7 @@ void buffer::Read(string file)
     {
         cout << "The file you have entered does not exist, re-run the program with the correct file name"<<endl;
         abort();
-    }        
+    }
     for (int i = 0; i < 3; i++) //gets the first 3 lines of file, which contain information on how the columns are ordered
     {
         getline(filein, line);
@@ -37,7 +41,7 @@ void buffer::Read(string file)
         getline(filein, line);
         if (line != "")
         {
-            myrecord = unpack(line); 
+            myrecord = unpack(line);
             pack(myrecord);
         }
     }
@@ -45,7 +49,7 @@ void buffer::Read(string file)
     filein.close(); //close the file
 
     myheader.recordCount = vectorRecords.size();
-    
+
     headerRecordString = myheader.addHeaderInformation(); // get header record string
 
     createLengthIndicatedFile(headerRecordString);
@@ -54,7 +58,7 @@ void buffer::createLengthIndicatedFile(string headerRecord) {
 
     record temp_record;
     ofstream fileout;
-    fileout.open("lengthIndicated.txt");
+    fileout.open("lengthIndicated.txt"); //open the file
     fileout << headerRecord;
     for (int i = 0; i < myheader.recordCount; i++) //for each record, print the record to the file
     {
@@ -62,7 +66,7 @@ void buffer::createLengthIndicatedFile(string headerRecord) {
         fileout << temp_record.recordSize<< ","; //first, output the length of the record
         for (int i = 0; i < myheader.fieldCount; i++)
         {
-            if(myheader.fieldOrder[i] == 1){ 
+            if(myheader.fieldOrder[i] == 1){
                 fileout <<temp_record.zipcode << ",";
             }
             else if (myheader.fieldOrder[i] == 2){
@@ -82,7 +86,7 @@ void buffer::createLengthIndicatedFile(string headerRecord) {
             }
         }
     }
-    fileout.close();
+    fileout.close(); //close the file before leaving
 }
 //see header for info
 record buffer::unpack(string line) {
@@ -92,7 +96,7 @@ record buffer::unpack(string line) {
     string record[myheader.fieldCount];
     for (int i = 0; i <line.length(); i++) { //for every character in line
 
-        if (line[i] == ','|| line[i-1] ==',') { 
+        if (line[i] == ','|| line[i-1] ==',') {
             temp_count++;
             i++;
         }
@@ -140,11 +144,11 @@ void buffer::EvaluateArguments(string arg[], int count) {
             if (argument[1] =='Z'|| argument[1]== 'z') //zip code argument
             {
                 argument.erase(0,2); //erase the -z from the argument
-                zipcode = stoi(argument);
+                zipcode = stoi(argument); //typecast the string zipcode into an integer
                 k.key = zipcode;
                 location = searchForPrimaryKey(k); //set the location of key if it exists,
                 k.byteLocation = location;
-                primaryKeyIndex.push_back(k);
+                primaryKeyIndex.push_back(k); //push the key into the vector of primary keys
             }
         }
     }
@@ -152,7 +156,7 @@ void buffer::EvaluateArguments(string arg[], int count) {
 }
 void buffer::createPrimaryKeyIndexFile(){
     ofstream outfile;
-    outfile.open(myheader.indexFileName);
+    outfile.open(myheader.indexFileName); //open the file
     primaryKey k;
 
     outfile << "Key Locations marked as \"-1\" do not exist in the csv data file."<<endl;
@@ -162,28 +166,29 @@ void buffer::createPrimaryKeyIndexFile(){
         k = primaryKeyIndex[i];
         outfile<< left << setw(10)<< "PrimaryKey: " << left << setw(6)<<k.key << left<< setw(1)<< " | "<< left << setw(10)<<"Location: "<< k.byteLocation << endl; //print key index to file
     }
+    outfile.close(); //close the file
 }
 int buffer::searchForPrimaryKey(primaryKey k) { //searches to see if the primary key is in the file, if so, returns the location
 
     string line;
     ifstream filein;
-    filein.open("lengthIndicated.txt");
+    filein.open("lengthIndicated.txt"); //open the file
     int location =0,totalLocation = 0;
     string numberString;
     getline(filein, line); //skip first line which contains the header information
-    
+
         for (int i = 0; i < myheader.recordCount; i++)
         {
             record r = vectorRecords[i];
             location = r.recordSize;
             if(stoi(r.zipcode) == k.key) //found the key and recorded location
             {
-                filein.close();
-                return(totalLocation); 
+                filein.close(); //close the file
+                return(totalLocation); //return the found key location
             }
             totalLocation = totalLocation + location; //update the total location
         }
-            filein.close();
+            filein.close(); //close the file
             return(-1); //key was not found, set to negative number to indicate it wasn't
 }
 //see header for info
@@ -203,7 +208,7 @@ void buffer::Write() {
     string zipWestMost, zipEastMost, zipNorthMost, zipSouthMost; //stores the zip code for the (west,east,north,south) most values.
 
     cout << string(design, '-') << endl; //header for output
-    cout << left <<setw(7) << "State"<< left <<setw(12)<< "North-Most" << left <<setw(12)<< "South-Most" << left <<setw(12)<< "East-Most" << left <<setw(12)<< "West-Most" << endl; //header for output
+    cout << setw(7) << "State"<< setw(12)<< "North-Most" << setw(12)<< "South-Most" << setw(12)<< "East-Most" << setw(12)<< "West-Most" << endl; //header for output
     cout << string(design, '-')<< endl; //header for output
 
     for(int i = 0; i < vectorRecords.size(); i++) //for every record in the vector
@@ -231,15 +236,15 @@ void buffer::Write() {
                 zipSouthMost = myrecord.zipcode; //store the zipcode for this record
             }
         }
-        else{ 
-            cout << left <<setw(7) << vectorRecords[i-1].state<< left <<setw(12)<< zipNorthMost << left <<setw(12)<< zipSouthMost << left <<setw(12)<< zipEastMost << left <<setw(12)<< zipWestMost << endl; //output the info for the state
+        else{
+            cout << setw(7) << vectorRecords[i-1].state<< setw(12)<< zipNorthMost << setw(12)<< zipSouthMost << setw(12)<< zipEastMost << setw(12)<< zipWestMost << endl; //output the info for the state
 
             st = myrecord.state;
             westMost = reset; //reset to impossible value
             eastMost = reset; //reset to impossible value
             northMost = reset; //reset to impossible value
             southMost = reset; //reset to impossible value
-            i--; //decrement so that this current state is accounted for 
+            i--; //decrement so that this current state is accounted for
         }
     }
      cout << string(design, '-')<< endl; //footer for output
@@ -257,7 +262,7 @@ void buffer:: PrintKeyData(){
     cout << string(design, '-') << endl; //header for output
     cout << left<< setw(12)<< "Zipcode"<< left<<setw(40)<< "City" << left<<setw(12)<< "State" << left<<setw(40)<< "County" << left<<setw(15)<< "Latitude" << left<<setw(15)<< "Longitude" << endl; //header for output
     cout << string(design, '-') << endl; //header for output
-    
+
     for (int i = 0; i < primaryKeyIndex.size(); i++) //for every primarykey in the index
     {
         k = primaryKeyIndex[i];
@@ -274,15 +279,15 @@ void buffer:: PrintKeyData(){
         }
         inFile.close();
     }
-    if (falseKey)
+    if (falseKey) //there was an incorrect key found, output all of the incorrect keys
     {
         cout << "\n\n\nThese keys did not exist in the file: ";
         for (int i = 0; i < primaryKeyIndex.size(); i++)
         {
             k = primaryKeyIndex[i];
-            if(k.byteLocation == -1)
+            if(k.byteLocation == -1) //the location was not found for this key
             {
-                cout <<" " <<k.key << ",";
+                cout <<" " <<k.key << ","; //output the key
             }
         }
     }
@@ -290,5 +295,3 @@ void buffer:: PrintKeyData(){
 bool operator <(const record& r1, const record& r2) {
     return r1.state < r2.state;  //compare the state of two records, to help with sorting
 }
-
-

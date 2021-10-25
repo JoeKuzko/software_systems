@@ -1,9 +1,0 @@
-Needs any c++ compiler that supports g++ commands in the terminal
-First you need a file path to the proper folder where zip is downloaded and extracted to
-Then use the command “g++ driver.cpp” to compile the program
-Then use commands either “./a.out” or “./a.exe” or whichever your compiler uses, followed by any csv file that has the only 6 columns of zip code, state, place name, county, lat, long.
-After the file name comes “-Z” or “-z” followed directly by any zip code you want to find
-Or you don’t input the zip codes and a generic table with the northern most, southern most, eastern most, westernmost zip codes from every state will generate.
-Ex: “./a.exe zipcode_column_randomized.csv -Z55304 -z55421 -Z55434”
-Ex: “C:\Users\joe\Desktop\software_systems-main>”
-This is an example of the user joe’s file path to the folder where the program resides on his personal computer.
