@@ -17,14 +17,7 @@ int main(int argc, char* argv[]) //take in arguments from command line
     {
         arr[i-2] = argv[i];
     }
-
-   // if (argv[2] == NULL) //user did not enter in any arguments after the file name
- //   {
- //      cout << "You didn't enter in any arguments! Please re-run the program and enter those in."<<endl; 
- //      abort();
- //   }
     
-
     buffer mybuffer; //create buffer instance
     mybuffer.Read(file); 
     if(argc > 2)
@@ -39,8 +32,6 @@ int main(int argc, char* argv[]) //take in arguments from command line
 
     return 0;
 }
-
-
 
 
 

@@ -203,7 +203,7 @@ void buffer::Write() {
     string zipWestMost, zipEastMost, zipNorthMost, zipSouthMost; //stores the zip code for the (west,east,north,south) most values.
 
     cout << string(design, '-') << endl; //header for output
-    cout << setw(7) << "State"<< setw(12)<< "North-Most" << setw(12)<< "South-Most" << setw(12)<< "East-Most" << setw(12)<< "West-Most" << endl; //header for output
+    cout << left <<setw(7) << "State"<< left <<setw(12)<< "North-Most" << left <<setw(12)<< "South-Most" << left <<setw(12)<< "East-Most" << left <<setw(12)<< "West-Most" << endl; //header for output
     cout << string(design, '-')<< endl; //header for output
 
     for(int i = 0; i < vectorRecords.size(); i++) //for every record in the vector
@@ -232,7 +232,7 @@ void buffer::Write() {
             }
         }
         else{ 
-            cout << setw(7) << vectorRecords[i-1].state<< setw(12)<< zipNorthMost << setw(12)<< zipSouthMost << setw(12)<< zipEastMost << setw(12)<< zipWestMost << endl; //output the info for the state
+            cout << left <<setw(7) << vectorRecords[i-1].state<< left <<setw(12)<< zipNorthMost << left <<setw(12)<< zipSouthMost << left <<setw(12)<< zipEastMost << left <<setw(12)<< zipWestMost << endl; //output the info for the state
 
             st = myrecord.state;
             westMost = reset; //reset to impossible value

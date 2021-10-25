@@ -1,3 +1,14 @@
 Key Locations marked as "-1" do not exist in the csv data file.
 ----------------------------------------------------------------------
 PrimaryKey: 56303  | Location: 1113335
+PrimaryKey: 56377  | Location: 1116269
+PrimaryKey: 1007   | Location: 317
+PrimaryKey: 1450   | Location: 8100
+PrimaryKey: 2339   | Location: 23551
+PrimaryKey: 2840   | Location: 33585
+PrimaryKey: 4240   | Location: 55526
+PrimaryKey: 5675   | Location: 82291
+PrimaryKey: 34256  | Location: -1
+PrimaryKey: 35261  | Location: 692628
+PrimaryKey: 10394  | Location: -1
+PrimaryKey: 21842  | Location: 400557
