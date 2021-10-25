@@ -72,12 +72,8 @@ public:
     *  
    */
     void pack(record);
-
     void createLengthIndicatedFile(string); //creates the length indicated file with the header at the top
-
-
     friend bool operator< (const record& r1, const record& r2); //overload < operator
-
 };
 #include "buffer.cpp"
 #endif

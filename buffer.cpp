@@ -14,15 +14,21 @@ void buffer::Read(string file)
     ifstream filein;
     filein.open(file);
 
-     if(!filein)
+    if(!filein)
     {
         cout << "The file you have entered does not exist, re-run the program with the correct file name"<<endl;
-    }
+        abort();
+    }        
     for (int i = 0; i < 3; i++) //gets the first 3 lines of file, which contain information on how the columns are ordered
-        {
-            getline(filein, line);
-            columnHeaders = columnHeaders + line;
+    {
+        getline(filein, line);
+
+        if(line == ""){
+            cout << "The file you have entered is empty, please re-run the program with a correct file"<< endl;
+            abort();
         }
+         columnHeaders = columnHeaders + line;
+    }
 
     myheader.determineOrder(columnHeaders); //determines the order of the columns
 
@@ -75,8 +81,6 @@ void buffer::createLengthIndicatedFile(string headerRecord) {
                 fileout <<temp_record.longitude << ",";
             }
         }
-        
-        //fileout << temp_record.recordSize<< ","<< temp_record.zipcode << ","<< temp_record.city << ","<< temp_record.state << ","<< temp_record.county << ","<< temp_record.latitude << ","<< temp_record.longitude << ",";
     }
     fileout.close();
 }
@@ -151,12 +155,13 @@ void buffer::createPrimaryKeyIndexFile(){
     outfile.open(myheader.indexFileName);
     primaryKey k;
 
+    outfile << "Key Locations marked as \"-1\" do not exist in the csv data file."<<endl;
+    outfile << string(70, '-') <<endl;
     for (int i = 0; i < primaryKeyIndex.size(); i++)
     {
         k = primaryKeyIndex[i];
-        outfile << "PrimaryKey: " << k.key << " | "<< "Location: "<< k.byteLocation << endl; //print key index to file
+        outfile<< left << setw(10)<< "PrimaryKey: " << left << setw(6)<<k.key << left<< setw(1)<< " | "<< left << setw(10)<<"Location: "<< k.byteLocation << endl; //print key index to file
     }
-    
 }
 int buffer::searchForPrimaryKey(primaryKey k) { //searches to see if the primary key is in the file, if so, returns the location
 
@@ -186,8 +191,6 @@ void buffer::Write() {
 
     sort(vectorRecords.begin(), vectorRecords.end()); //sort the vector to make processing easier
 
-
-
 // Evaluate and ouput west,east,north, and south most zip codes for each state //
     record myrecord;
     myrecord = vectorRecords[0];
@@ -202,7 +205,6 @@ void buffer::Write() {
     cout << string(design, '-') << endl; //header for output
     cout << setw(7) << "State"<< setw(12)<< "North-Most" << setw(12)<< "South-Most" << setw(12)<< "East-Most" << setw(12)<< "West-Most" << endl; //header for output
     cout << string(design, '-')<< endl; //header for output
-
 
     for(int i = 0; i < vectorRecords.size(); i++) //for every record in the vector
     {
@@ -247,13 +249,13 @@ void buffer:: PrintKeyData(){
     ifstream inFile;
     inFile.open("lengthIndicated.txt");
     string line;
-    const int design = 77; //value for formatting output
+    const int design = 140; //value for formatting output
     primaryKey k;
     bool falseKey = false;
     getline(inFile, line); //ignore the first line, which contains header information
 
     cout << string(design, '-') << endl; //header for output
-    cout << left<< setw(12)<< "Zipcode"<< left<<setw(20)<< "City" << left<<setw(12)<< "State" << left<<setw(12)<< "County" << left<<setw(12)<< "Latitude" << left<<setw(12)<< "Longitude" << endl; //header for output
+    cout << left<< setw(12)<< "Zipcode"<< left<<setw(40)<< "City" << left<<setw(12)<< "State" << left<<setw(40)<< "County" << left<<setw(15)<< "Latitude" << left<<setw(15)<< "Longitude" << endl; //header for output
     cout << string(design, '-') << endl; //header for output
     
     for (int i = 0; i < primaryKeyIndex.size(); i++) //for every primarykey in the index
@@ -267,7 +269,7 @@ void buffer:: PrintKeyData(){
             record r = vectorRecords[i];
             if(stoi(r.zipcode) == k.key) //found the key and recorded location
             {
-                cout << left<< setw(12)<< r.zipcode<< left<<setw(20)<< r.city<< left<<setw(12)<< r.state<< left<<setw(12)<< r.county << left<<setw(12)<< r.latitude<< left<<setw(12)<< r.longitude << endl;
+                cout << left<< setw(12)<< r.zipcode<< left<<setw(40)<< r.city<< left<<setw(12)<< r.state<< left<<setw(40)<< r.county << left<<setw(15)<< r.latitude<< left<<setw(15)<< r.longitude << endl;
             }
         }
         inFile.close();
@@ -280,7 +282,7 @@ void buffer:: PrintKeyData(){
             k = primaryKeyIndex[i];
             if(k.byteLocation == -1)
             {
-                cout << "\n"<< k.key << ",";
+                cout <<" " <<k.key << ",";
             }
         }
     }
